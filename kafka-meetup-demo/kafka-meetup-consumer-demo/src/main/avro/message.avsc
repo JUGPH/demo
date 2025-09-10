@@ -1,0 +1,19 @@
+{
+  "namespace": "com.rjtmahinay.kafka.avro",
+  "type": "record",
+  "name": "Message",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "content",
+      "type": "string"
+    },
+    {
+      "name": "timestamp",
+      "type": "long"
+    }
+  ]
+}

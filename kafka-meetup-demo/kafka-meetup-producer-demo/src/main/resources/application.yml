@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: kafka-meetup-producer-demo
+
+  kafka:
+    bootstrap-servers: pkc-921jm.us-east-2.aws.confluent.cloud:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      properties:
+        schema:
+          registry:
+            url: https://psrc-4yovk.us-east-2.aws.confluent.cloud
+        basic:
+          auth:
+            credentials:
+              source: USER_INFO
+            user:
+              info: WDGHA2HHUXWYA4L5:MfvfkRrX2nSVhKFQL5v5eH+EgkhmPHI/slytA7eZUUN1enZPDBngXK8nt+SP+er0
+        specific.avro.reader: true
+        sasl:
+          mechanism: PLAIN
+          jaas:
+            config: org.apache.kafka.common.security.plain.PlainLoginModule required username='RMWJR2S5NLMZ23XY' password='v80hqZGleHtLIitC1y4sNCXIMC5l0Zpj8k87XKu2UxSfMdPGomwoBgzzL6+7KYrL';
+        security:
+          protocol: SASL_SSL
+      client-id: ccloud-springboot-client-647d3148-13b3-496f-8b37-150f2041b46a
+
+
+jugph:
+  topic:
+    name: message_event_activity

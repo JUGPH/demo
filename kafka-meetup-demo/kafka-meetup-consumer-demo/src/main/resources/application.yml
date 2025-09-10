@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: kafka-meetup-consumer-demo
+
+  kafka:
+    bootstrap-servers: <bootstrap servers>:9092
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      properties:
+        specific.avro.reader: true
+        schema:
+          registry:
+            url: <schema registry url>
+        basic:
+          auth:
+            credentials:
+              source: USER_INFO
+            user:
+              info: <api key>:<api secret>
+        sasl:
+          mechanism: PLAIN
+          jaas:
+            config: org.apache.kafka.common.security.plain.PlainLoginModule required username='<api key>' password='<api secret>';
+        security:
+          protocol: SASL_SSL
+      client-id: <kafka client id>
+      group-id: jugph-consumer-group-1
+      auto-offset-reset: earliest
+
+server:
+  port: 8081
+
+jugph:
+  topic:
+    name: <topic name>
